@@ -25,19 +25,18 @@ function Register() {
     e.preventDefault();
 
     try {
-  const response = await axios.post(
-    "http://127.0.0.1:5000/register",
-    student
-  );
+      const response = await axios.post(
+        "https://ai-internship-portal-1.onrender.com/register",
+        student
+      );
 
-  localStorage.setItem("student", JSON.stringify(student));
+      localStorage.setItem("student", JSON.stringify(student));
 
-  alert(response.data.message);
-
-} catch (error) {
-  console.log(error);
-  alert("Registration Failed");
-}
+      alert(response.data.message);
+    } catch (error) {
+      console.log(error);
+      alert("Registration Failed");
+    }
   };
 
   return (
@@ -45,7 +44,6 @@ function Register() {
       <h1>Student Registration</h1>
 
       <form className="register-form" onSubmit={handleSubmit}>
-
         <input
           type="text"
           name="name"
@@ -119,7 +117,6 @@ function Register() {
         />
 
         <button type="submit">Register</button>
-
       </form>
     </div>
   );

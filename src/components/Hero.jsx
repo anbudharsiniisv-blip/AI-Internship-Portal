@@ -11,7 +11,7 @@ function Hero() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/stats")
+      .get("https://ai-internship-portal-1.onrender.com/stats")
       .then((res) => {
         setStats(res.data);
       })

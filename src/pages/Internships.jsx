@@ -7,7 +7,7 @@ function Internships() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/internships")
+      .get("https://ai-internship-portal-1.onrender.com/internships")
       .then((res) => {
         setInternships(res.data);
       })
@@ -16,51 +16,50 @@ function Internships() {
       });
   }, []);
 
-const applyInternship = async (internship) => {
+  const applyInternship = async (internship) => {
+    // Get student details from localStorage
+    const student = JSON.parse(localStorage.getItem("student"));
 
-  // Get student details from localStorage
-  const student = JSON.parse(localStorage.getItem("student"));
+    if (!student) {
+      alert("Please register first.");
+      return;
+    }
 
-  if (!student) {
-    alert("Please register first.");
-    return;
-  }
+    const application = {
+      studentName: student.name,
+      studentEmail: student.email,
+      studentMobile: student.mobile,
 
-  const application = {
-    studentName: student.name,
-    studentEmail: student.email,
-    studentMobile: student.mobile,
+      title: internship.title,
+      company: internship.company,
+      location: internship.location,
+      skills: internship.skills,
+      stipend: internship.stipend,
 
-    title: internship.title,
-    company: internship.company,
-    location: internship.location,
-    skills: internship.skills,
-    stipend: internship.stipend,
+      status: "Applied",
+    };
 
-    status: "Applied"
+    try {
+      const response = await axios.post(
+        "https://ai-internship-portal-1.onrender.com/apply",
+        application
+      );
+
+      alert(response.data.message);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Application Failed!");
+      }
+    }
   };
 
-  try {
-    const response = await axios.post(
-      "http://127.0.0.1:5000/apply",
-      application
-    );
-
-    alert(response.data.message);
-
-  } catch (error) {
-    if (error.response) {
-      alert(error.response.data.message);
-    } else {
-      alert("Application Failed!");
-    }
-  }
-};
-
-  const filteredInternships = internships.filter((internship) =>
-    internship.title.toLowerCase().includes(search.toLowerCase()) ||
-    internship.company.toLowerCase().includes(search.toLowerCase()) ||
-    internship.skills.toLowerCase().includes(search.toLowerCase())
+  const filteredInternships = internships.filter(
+    (internship) =>
+      internship.title.toLowerCase().includes(search.toLowerCase()) ||
+      internship.company.toLowerCase().includes(search.toLowerCase()) ||
+      internship.skills.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

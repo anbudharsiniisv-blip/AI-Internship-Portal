@@ -6,7 +6,7 @@ function Applications() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/applications")
+      .get("https://ai-internship-portal-1.onrender.com/applications")
       .then((res) => {
         setApplications(res.data);
       })
