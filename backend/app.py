@@ -12,8 +12,11 @@ def home():
         "message": "AI Internship Backend is running successfully 🚀"
     })
 
-# ================= MongoDB Connection =================
-client = MongoClient("mongodb://localhost:27017/")
+# ================= MongoDB Atlas Connection =================
+client = MongoClient(
+    "mongodb+srv://anbudharsiniisv_db_user:anbu1921@cluster0.agqf2my.mongodb.net/internship_portal?retryWrites=true&w=majority&appName=Cluster0"
+)
+
 db = client["internship_portal"]
 
 students = db["students"]
@@ -62,7 +65,6 @@ def get_internships():
 def apply():
     data = request.get_json()
 
-    # Prevent duplicate applications
     existing = applications.find_one({
         "studentEmail": data["studentEmail"],
         "title": data["title"]
