@@ -5,7 +5,14 @@ from pymongo import MongoClient
 app = Flask(__name__)
 CORS(app)
 
-# MongoDB Connection
+# ================= Home =================
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "AI Internship Backend is running successfully 🚀"
+    })
+
+# ================= MongoDB Connection =================
 client = MongoClient("mongodb://localhost:27017/")
 db = client["internship_portal"]
 
