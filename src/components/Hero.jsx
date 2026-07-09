@@ -21,51 +21,69 @@ function Hero() {
   }, []);
 
   return (
-    <section className="hero">
+    <section className="container py-5">
 
-      <div className="hero-content">
+      <div className="row justify-content-center text-center">
 
-        <h1>
-          🚀 Discover Your Dream Internship <br />
-          <span>Powered by Artificial Intelligence</span>
-        </h1>
+        <div className="col-lg-8">
 
-        <p>
-          Connect with top companies, receive AI-powered internship
-          recommendations, and kickstart your career with opportunities
-          tailored to your skills and interests.
-        </p>
+          <h1 className="display-4 fw-bold">
+            🚀 Discover Your Dream Internship
+          </h1>
 
-        <div className="hero-buttons">
-          <Link to="/register">
-            <button className="btn-primary">
-              Get Started
-            </button>
-          </Link>
+          <h2 className="text-info fw-bold mb-4">
+            Powered by Artificial Intelligence
+          </h2>
 
-          <Link to="/internships">
-            <button className="btn-secondary">
-              Explore Internships
-            </button>
-          </Link>
-        </div>
+          <p className="lead text-light">
+            Connect with top companies, receive AI-powered internship
+            recommendations, and kickstart your career with opportunities
+            tailored to your skills and interests.
+          </p>
 
-        {/* 🔥 LIVE STATS FROM MONGODB */}
-        <div className="hero-stats">
+          <div className="mt-4">
+            <Link to="/register">
+              <button className="btn btn-primary btn-lg me-3">
+                Get Started
+              </button>
+            </Link>
 
-          <div className="stat-box">
-            <h2>{stats.internships}+</h2>
-            <p>Internships</p>
+            <Link to="/internships">
+              <button className="btn btn-outline-info btn-lg">
+                Explore Internships
+              </button>
+            </Link>
           </div>
 
-          <div className="stat-box">
-            <h2>{stats.students}+</h2>
-            <p>Students</p>
-          </div>
+          <div className="row mt-5 g-4">
 
-          <div className="stat-box">
-            <h2>{stats.applications}+</h2>
-            <p>Applications</p>
+            <div className="col-md-4">
+              <div className="card bg-dark text-white border-info shadow">
+                <div className="card-body">
+                  <h2 className="text-info">{stats.internships}+</h2>
+                  <p className="mb-0">Internships</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="card bg-dark text-white border-info shadow">
+                <div className="card-body">
+                  <h2 className="text-info">{stats.students}+</h2>
+                  <p className="mb-0">Students</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="card bg-dark text-white border-info shadow">
+                <div className="card-body">
+                  <h2 className="text-info">{stats.applications}+</h2>
+                  <p className="mb-0">Applications</p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
