@@ -14,7 +14,7 @@ def home():
 
 # ================= MongoDB Atlas Connection =================
 client = MongoClient(
-    "mongodb+srv://anbudharsiniisv_db_user:anbu1921@cluster0.agqf2my.mongodb.net/internship_portal?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://anbudharsiniisv_db_user:Anbu12345@cluster0.agqf2my.mongodb.net/internship_portal?retryWrites=true&w=majority&appName=Cluster0"
 )
 
 db = client["internship_portal"]
