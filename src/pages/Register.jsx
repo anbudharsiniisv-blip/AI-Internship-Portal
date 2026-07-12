@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [student, setStudent] = useState({
     name: "",
     email: "",
@@ -30,12 +33,18 @@ function Register() {
         student
       );
 
+      // Save student details
       localStorage.setItem("student", JSON.stringify(student));
 
-      alert(response.data.message);
+      // Success message
+      alert("🎉 Registration Successful!");
+
+      // Redirect to internships page
+      navigate("/internships");
+
     } catch (error) {
       console.log(error);
-      alert("Registration Failed");
+      alert("❌ Registration Failed!");
     }
   };
 
@@ -44,12 +53,14 @@ function Register() {
       <h1>Student Registration</h1>
 
       <form className="register-form" onSubmit={handleSubmit}>
+
         <input
           type="text"
           name="name"
           placeholder="Full Name"
           value={student.name}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -58,6 +69,7 @@ function Register() {
           placeholder="Email Address"
           value={student.email}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -66,6 +78,7 @@ function Register() {
           placeholder="Mobile Number"
           value={student.mobile}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -74,6 +87,7 @@ function Register() {
           placeholder="College Name"
           value={student.college}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -82,6 +96,7 @@ function Register() {
           placeholder="Department"
           value={student.department}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -90,6 +105,7 @@ function Register() {
           placeholder="Skills (HTML, CSS, React)"
           value={student.skills}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -98,6 +114,7 @@ function Register() {
           placeholder="Interested Domain"
           value={student.domain}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -106,6 +123,7 @@ function Register() {
           placeholder="Location"
           value={student.location}
           onChange={handleChange}
+          required
         />
 
         <input
@@ -114,9 +132,13 @@ function Register() {
           placeholder="Graduation Year"
           value={student.graduation}
           onChange={handleChange}
+          required
         />
 
-        <button type="submit">Register</button>
+        <button type="submit">
+          Register
+        </button>
+
       </form>
     </div>
   );
