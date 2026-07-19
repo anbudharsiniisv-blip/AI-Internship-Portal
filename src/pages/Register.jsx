@@ -28,10 +28,10 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://ai-internship-portal-1.onrender.com/register",
-        student
-      );
+      await axios.post(
+  "https://ai-internship-portal-1.onrender.com/register",
+  student
+);
 
       // Save student details
       localStorage.setItem("student", JSON.stringify(student));
