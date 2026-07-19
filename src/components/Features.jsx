@@ -29,14 +29,6 @@ function Features() {
           </p>
         </div>
 
-        <div className="card">
-          <h3>⚡ Quick & Easy Application</h3>
-          <p>
-            Register once and apply to multiple internship opportunities
-            with a simple and user-friendly process.
-          </p>
-        </div>
-
       </div>
     </section>
   );
